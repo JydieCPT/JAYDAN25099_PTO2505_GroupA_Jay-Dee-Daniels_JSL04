@@ -79,19 +79,48 @@ body {
   font-weight: 500;
 }
 
-/******** Mobile ********/
+/******** Mobile View (≤576px) ********/
 @media screen and (max-width: 576px) {
-  .card-column-main {
-    grid-template-columns: minmax(
-      0,
-      380px
-    ); /* Stack columns in single column */
+  /* Hide sidebar */
+  .sidebar {
+    display: none;
   }
 
-  .column-div {
-    padding: 24px;
+  /* Stack columns vertically */
+  .columns {
+    flex-direction: column;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  .board {
+    padding: 1rem;
+  }
+
+  /* Modal tweaks for mobile */
+  .modal {
+    max-width: 95%; /* modal fills most of the screen */
+    margin: 0 1rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .modal-backdrop {
+    backdrop-filter: blur(6px); /* blurry background effect */
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Fix column spacing on mobile cards */
+  .task {
+    font-size: 1rem;
+    padding: 1rem;
   }
 }
+
 
 /* Modal */
 .modal-backdrop {
