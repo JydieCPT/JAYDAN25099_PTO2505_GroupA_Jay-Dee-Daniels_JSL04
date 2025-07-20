@@ -1,94 +1,68 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;1,400&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="./styles.css" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./assets/favicon.svg"
-    />
-    <script defer src="./initialData.js"></script>
-    <script defer src="./modal.js"></script>
-    <title>Kanban Task Management</title>
-  </head>
-
-  <body>
-    <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
-    <nav class="side-bar" id="side-bar-div">
-      <div id="side-logo-div">
-        <img id="logo" src="./assets/logo-light.svg" alt="logo-light" />
-      </div>
-
-      <div class="boards-nav-links-div" id="boards-nav-links-div">
-        <h4 id="headline-sidepanel">ALL BOARDS (1)</h4>
-        <button class="board-btn">Launch Career</button>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="sidebar">
+    <h2 class="logo">kanban</h2>
+    <nav>
+      <button class="nav-button">Launch Career</button>
     </nav>
+  </div>
 
-    <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
-    <div id="layout">
-      <header id="header" class="sticky-header">
-        <div class="header-name-div">
-          <img
-            src="./assets/favicon.svg"
-            alt="logo-mobile"
-            class="logo-mobile"
-          />
-          <h2 class="header-board-name" id="header-board-name">
-            Launch Career
-          </h2>
-        </div>
-      </header>
-
-      <div class="container">
-        <main class="card-column-main">
-          <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
-          <div class="column-div" data-status="todo">
-            <div id="todo-head-div" class="column-head-div">
-              <span class="dot" id="todo-dot"></span>
-              <h4 id="toDoText" class="columnHeader">TODO (4)</h4>
-            </div>
-            <!-- Tasks container for TODO -->
-            <div class="tasks-container">
-              <div class="task-div">Launch Epic Career 🚀</div>
-              <div class="task-div">Conquer React⚛️</div>
-              <div class="task-div">Understand Databases⚙️</div>
-              <div class="task-div">Crush Frameworks🖼️</div>
-            </div>
-          </div>
-          <!-- DOING Column -->
-          <div class="column-div" data-status="doing">
-            <div id="doing-head-div" class="column-head-div">
-              <span class="dot" id="doing-dot"></span>
-              <h4 id="doingText" class="columnHeader">DOING (2)</h4>
-            </div>
-            <!-- Tasks container for DOING -->
-            <div class="tasks-container">
-              <div class="task-div">Master JavaScript 💛</div>
-              <div class="task-div">Never Give Up 🏆</div>
-            </div>
-          </div>
-          <!-- DONE Column -->
-          <div class="column-div" data-status="done">
-            <div id="done-head-div" class="column-head-div">
-              <span class="dot" id="done-dot"></span>
-              <h4 id="doneText" class="columnHeader">DONE (2)</h4>
-            </div>
-            <!-- Tasks container for DONE -->
-            <div class="tasks-container">
-              <div class="task-div">Explore ES6 Features 🚀</div>
-              <div class="task-div">Have fun 🥳</div>
-            </div>
-          </div>
-        </main>
+  <main class="board">
+    <h1 class="board-title">Launch Career</h1>
+    <div class="columns">
+      <div class="column" data-status="todo">
+        <h3 class="column-title">🟣 TODO (4)</h3>
+        <div class="task" data-title="Launch Epic Career 🚀" data-description="Start your dream job journey" data-status="todo">Launch Epic Career 🚀</div>
+        <div class="task" data-title="Conquer React ⚛️" data-description="Master React for building interfaces" data-status="todo">Conquer React ⚛️</div>
+        <div class="task" data-title="Understand Data Structures ⚙️" data-description="Understand arrays, linked lists, trees" data-status="todo">Understand Data Structures ⚙️</div>
+        <div class="task" data-title="Crush Frameworks 🧱" data-description="Learn everything about React Frameworks" data-status="todo">Crush Frameworks 🧱</div>
+      </div>
+      <div class="column" data-status="doing">
+        <h3 class="column-title">🟣 DOING (2)</h3>
+        <div class="task" data-title="Master JavaScript 💛" data-description="Become confident in vanilla JS" data-status="doing">Master JavaScript 💛</div>
+        <div class="task" data-title="Never Give Up 🏆" data-description="Understand types, interfaces, and more" data-status="doing">Never Give Up 🏆</div>
+      </div>
+      <div class="column" data-status="done">
+        <h3 class="column-title">🟢 DONE (2)</h3>
+        <div class="task" data-title="Explore ES6 Features 🚀" data-description="Destructuring, spread, arrow functions" data-status="done">Explore ES6 Features 🚀</div>
+        <div class="task" data-title="Have fun 🥳" data-description="Callbacks, promises, async/await" data-status="done">Have fun 🥳</div>
       </div>
     </div>
-  </body>
+  </main>
+
+  <!-- Modal -->
+  <div id="task-modal-backdrop" class="modal-backdrop hidden">
+    <div class="modal">
+      <button id="close-modal" class="close-btn">×</button>
+      <h3 class="modal-heading">Task</h3>
+
+      <label class="modal-label">Title
+        <input id="modal-title" type="text" class="modal-input" />
+      </label>
+
+      <label class="modal-label">Description
+        <textarea id="modal-desc" class="modal-input"></textarea>
+      </label>
+
+      <label class="modal-label">Status
+        <select id="modal-status" class="modal-input">
+          <option value="todo">todo</option>
+          <option value="doing">doing</option>
+          <option value="done">done</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <script src="initialData.js"></script>
+  <script src="modal.js"></script>
+</body>
 </html>
