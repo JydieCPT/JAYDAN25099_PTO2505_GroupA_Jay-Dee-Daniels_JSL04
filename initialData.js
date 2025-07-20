@@ -1,3 +1,17 @@
+/**
+ * @typedef {Object} Task
+ * @property {number} id - Unique identifier for the task
+ * @property {string} title - Title of the task
+ * @property {string} description - Detailed explanation of the task
+ * @property {'todo' | 'doing' | 'done'} status - Current status of the task
+ */
+
+/**
+ * An array of task objects used to initialize the Kanban board.
+ * Each task is rendered dynamically based on its `status`.
+ * 
+ * @type {Task[]}
+ */
 const initialTasks = [
   {
     id: 1,
@@ -17,7 +31,6 @@ const initialTasks = [
     description: "You're almost there",
     status: "doing",
   },
-
   {
     id: 11,
     title: "Learn Data Structures and Algorithms 📚",
